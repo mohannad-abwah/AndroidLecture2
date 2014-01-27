@@ -30,12 +30,8 @@ public class MySimpleAdapter extends BaseAdapter {
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
 
-		if (convertView == null) {
-			// inflate view
-			Context context = parent.getContext();
-			LayoutInflater inflater = LayoutInflater.from(context);
-			convertView = inflater.inflate(R.layout.list_item, parent, false);
-		}
+		// inflate view if necessary
+		convertView = prepareView(convertView, parent);
 
 		// fill it in with data
 		TextView textView = (TextView) convertView.findViewById(R.id.list_item_text);
@@ -44,6 +40,16 @@ public class MySimpleAdapter extends BaseAdapter {
 
 		// return it
 		return convertView;
+	}
+
+	private View prepareView(View convertView, ViewGroup parent) {
+		if (convertView == null) {
+			Context context = parent.getContext();
+			LayoutInflater inflater = LayoutInflater.from(context);
+			return inflater.inflate(R.layout.list_item, parent, false);
+		} else {
+			return convertView;
+		}
 	}
 
 }

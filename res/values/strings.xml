@@ -2,5 +2,9 @@
 
     <string name="app_name">AndroidUI</string>
     <string name="hello_world">Hello World!</string>
+    <string name="list_item_header">Header</string>
+
+    <!-- Content Descriptions -->
+    <string name="cd_list_item_image">List item image</string>
 
 </resources>
