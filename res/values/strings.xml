@@ -4,6 +4,11 @@
     <string name="hello_world">Hello World!</string>
     <string name="list_item_header">Header</string>
 
+    <!-- Buttons -->
+    <string name="btn_skip_one">Skip one!</string>
+    <string name="btn_launch_activity">Launch Activity!</string>
+    <string name="btn_done">Done!</string>
+
     <!-- Content Descriptions -->
     <string name="cd_list_item_image">List item image</string>
 

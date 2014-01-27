@@ -10,6 +10,7 @@ import android.widget.TextView;
 public class MySimpleAdapter extends BaseAdapter {
 	
 	private final String[] data = new String[]{"Hello", "World!", "How's", "it", "going?", "I'm", "doing", "great!", "Android", "is", "easy", "to", "learn!"};
+	private int offset = 0;
 
 	@Override
 	public int getCount() {
@@ -18,7 +19,7 @@ public class MySimpleAdapter extends BaseAdapter {
 
 	@Override // optional (can change return type to any non-primitive Java type)
 	public String getItem(int position) {
-		int index = position % data.length;
+		int index = (position + offset) % data.length;
 		return data[index];
 	}
 
@@ -50,6 +51,11 @@ public class MySimpleAdapter extends BaseAdapter {
 		} else {
 			return convertView;
 		}
+	}
+
+	public void skipOne() {
+		offset++;
+		notifyDataSetChanged();
 	}
 
 }
