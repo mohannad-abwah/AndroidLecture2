@@ -13,12 +13,13 @@ public class MySimpleAdapter extends BaseAdapter {
 
 	@Override
 	public int getCount() {
-		return data.length;
+		return Integer.MAX_VALUE;
 	}
 
 	@Override // optional (can change return type to any non-primitive Java type)
 	public String getItem(int position) {
-		return data[position];
+		int index = position % data.length;
+		return data[index];
 	}
 
 	@Override // optional
@@ -28,19 +29,21 @@ public class MySimpleAdapter extends BaseAdapter {
 
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
-		
-		// inflate view
-		Context context = parent.getContext();
-		LayoutInflater inflater = LayoutInflater.from(context);
-		View view = inflater.inflate(R.layout.list_item, parent, false);
-		
+
+		if (convertView == null) {
+			// inflate view
+			Context context = parent.getContext();
+			LayoutInflater inflater = LayoutInflater.from(context);
+			convertView = inflater.inflate(R.layout.list_item, parent, false);
+		}
+
 		// fill it in with data
-		TextView textView = (TextView) view.findViewById(R.id.list_item_text);
+		TextView textView = (TextView) convertView.findViewById(R.id.list_item_text);
 		String text = getItem(position);
 		textView.setText(text);
-		
+
 		// return it
-		return view;
+		return convertView;
 	}
 
 }
